@@ -1,0 +1,20 @@
+#Author: Lawrence Muchilwa.
+#Contact: muchilwal@gmail.com
+#Version: 1.0 
+#License: GNU GPLv3 
+#Inspired by work on testmyids.com
+#Read Me
+#Unzip the folder (maintain the paths esp index.html) and run docker-compose up --detach
+#Command will setup Nginx web server and use the index.html as homepage. It will expose the nginx logs files in cwd
+#You can change the ports to suit you.
+#From your browser, navigate to https://x.x.x.x:8000. You can change this to suit your deployment needs
+version: "3"
+
+services:
+    client:
+        image: nginx
+        ports:
+            - 8000:80
+        volumes:
+            - ./index.html:/usr/share/nginx/html/index.html
+            - ./:/var/log/nginx/
